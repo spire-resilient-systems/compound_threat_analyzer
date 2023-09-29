@@ -1,0 +1,13 @@
+name: compound_threat_analyzer
+channels:
+  - defaults
+dependencies:
+  - python=3.8
+  - numpy
+  - pandas
+  - matplotlib
+  - openpyxl
+  - pip 
+  - pip:
+    - jupyterlab
+    - absl-py

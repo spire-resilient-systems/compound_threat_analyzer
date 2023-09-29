@@ -1,0 +1,15 @@
+.DS_Store
+__pycache__/
+*.dat
+.vscode
+temp/
+experiments/SERDP-results/*
+experiments/SERDP-graphs-pngs/*
+data/synthetic_data/*.csv
+data/synthetic_data/*.txt
+data/hawaii_data/*.csv
+data/florida_data/*.csv
+data/florida_data/*.stats
+run_tables
+default_output_file.csv
+tmp/
