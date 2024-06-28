@@ -111,19 +111,19 @@ FIG_WISE_PARAMS = {
         'sites': ['FL_superhurricane_PalmBeach_PortOrange_Jacksonville'],
     },
 
-    '10a': {
-        'params': ["--num_hurricane_instances=1000", "--bucket=1"],
-        'configs': ['6+6', '6+6+6'],
-        'sites': ['HI_H5Cat2_Honolulu_Waiau_DRFortress', 'HI_H5Cat2_Honolulu_Kahe_DRFortress'],
-    },
+    # '10a': {
+    #     'params': ["--num_hurricane_instances=1000", "--bucket=1"],
+    #     'configs': ['6+6', '6+6+6'],
+    #     'sites': ['HI_H5Cat2_Honolulu_Waiau_DRFortress', 'HI_H5Cat2_Honolulu_Kahe_DRFortress'],
+    # },
 
-    '10b': {
+    '10a': {
         'params': ["--method=1", "--hurricane_knowledge=yes", "--num_hurricane_instances=1000", "--bucket=2"],
         'configs': ['6+6', '6+6+6'],
         'sites': ['HI_H5Cat2_Honolulu_Waiau_DRFortress', 'HI_H5Cat2_Honolulu_Kahe_DRFortress'],
     },
 
-    '10c': {
+    '10b': {
         'params': ["--method=2", "--random_count=100000", "--num_hurricane_instances=1000",  "--server_threshold=1", "--sites_threshold=1", "--bucket=4"],
         'configs': ['6+6', '6+6+6'],
         'sites': ['HI_H5Cat2_Honolulu_Waiau_DRFortress', 'HI_H5Cat2_Honolulu_Kahe_DRFortress'],
@@ -159,13 +159,13 @@ FIG_WISE_PARAMS = {
         'sites': ['FL_superhurricane_PalmBeach_PortOrange_Jacksonville'],
     },
 
-    '14': {
+    'A1a': {
         'params': ["--num_hurricane_instances=1000", "--bucket=1"],
         'configs': ['2', '2+2', '6', '6+6', '6+6+6'],
         'sites': ['HI_H5Cat3_Honolulu_Waiau_DRFortress'],
     },
 
-    '15': {
+    'A1b': {
         'params': ["--method=1", "--hurricane_knowledge=yes", "--num_hurricane_instances=1000", "--bucket=4"],
         'configs': ['2', '2+2', '6', '6+6', '6+6+6'],
         'sites': ['HI_H5Cat3_Honolulu_Waiau_DRFortress'],
@@ -227,7 +227,8 @@ def main():
                 if fig not in ['10a', '10b', '10c', '11a', '11b']:
                     output_param += fig + '_' + conf + '.csv'
                     
-                elif fig in ['10a', '10b', '10c']:
+                # elif fig in ['10a', '10b', '10c']:
+                elif fig in ['10a', '10b']:
                     site_letter = 'W' if sites == 'HI_H5Cat2_Honolulu_Waiau_DRFortress' else 'K'
                     output_param += fig + '_' + conf + '_' + site_letter + '.csv'
                     
