@@ -90,10 +90,10 @@ We have the following options to specify when running the program:
         The sequence of events, specifically the reconfiguration scenarios. 0 is when reconfiguration happens based on Hurricane prediction followed by a CA. 1 is when CA is in the aftermath of hurricane and reconfiguration happends on Hurricane impact knowledge only. 2 is when CA coincide with the hurricane and reconfiguration happens with the knowledge of both.
 
 
-Since each run of the analyzer is one experiment, we use scripts in the ```./experiments``` directory to run the analyzer multiple times with different parameters to generate the required results which are used by the graph generation notebooks in the same directory. As an example, see the following section "Recreating SERDP results". 
+Since each run of the analyzer is one experiment, we use scripts in the ```./experiments``` directory to run the analyzer multiple times with different parameters to generate the required results which are used by the graph generation notebooks in the same directory. As an example, see the following section "Recreating SRDS results". 
 
-## Recreating SERDP results:
-This section describes the steps to recreate the core results from our SERDP project. Note that the python scripts contain the relevant shebang in them. If you are unable to run them, try ```chmod +x script.py``` or ```python script.py```.
+## Recreating SRDS results:
+This section describes the steps to recreate the core results from our SRDS project. Note that the python scripts contain the relevant shebang in them. If you are unable to run them, try ```chmod +x script.py``` or ```python script.py```.
 1. First, activate the conda environment ```conda activate compound_threat_analyzer```. See the section "Set up the conda environment as follows:" for instructions to set the environment up for the first time. 
 2. Next, you need to generate the data files that the analyzer can run on. For this, starting from the this root directory of the project, change directory to ./data/hawaii_data and run the script "data_compiler.py" to generate data files for Hawaii. Next change directory to ../florida_data and run the script "data_compiler_superhurricane.py" to generate the data file for Florida.:
 
@@ -105,18 +105,18 @@ cd ../florida_data
 ./data_compiler_superhurricane.py
 ```
 
-3. Next, change directory to `../../experiments` and run the script "SERDP-experiments.py" i.e. do:
+3. Next, change directory to `../../experiments` and run the script "SRDS-experiments.py" i.e. do:
 
 ```
-cd ../../experiments; ./SERDP-experiments.py
+cd ../../experiments; ./SRDS-experiments.py
 ```
 
-4. Following this, run all the cells in the ```SERDP-graphs.ipynb``` notebook to generate the graphs.
+4. Following this, run all the cells in the ```SRDS-graphs.ipynb``` notebook to generate the graphs.
 
 Note: Experiments using the uniformly random cyberattack model (`method=2`)
 take a long time to run. To run only a subset of the experiments that excludes
 those using the uniformly random cyberattack model (and should finish quickly),
-you can use `SERDP-experiments-subset.py` and `SERDP-graphs-subset.ipynb`
+you can use `SRDS-experiments-subset.py` and `SRDS-graphs-subset.ipynb`
 instead.
 
 ## Data files:
@@ -130,7 +130,7 @@ We have three sets of data:
     There is another script in this directory called ```summaries-grid-maker.py``` for analysis purposes. It generates the information on when the sites go down and the correlations between the site failures in the case of the superhurricane.
 
 3. **Synthetic hurricane data:**
-    The directory ```./data/synthetic_data``` contains the script ```synthetic_hurricane_impact_generator.py``` that can be used to create synthetic hurricane data that the analyzer can use. The script can generate data based on the probabilities of each site's failure and correlated failure probabilities. The probabilities can be set in the ```main()``` function in the script by editing the dictionary objected named ```probs```. The synthetic hurricanes are not used by the SERDP experiments script, however, it can be useful for exploring the impact of correlated failures between sites in more detail.
+    The directory ```./data/synthetic_data``` contains the script ```synthetic_hurricane_impact_generator.py``` that can be used to create synthetic hurricane data that the analyzer can use. The script can generate data based on the probabilities of each site's failure and correlated failure probabilities. The probabilities can be set in the ```main()``` function in the script by editing the dictionary objected named ```probs```. The synthetic hurricanes are not used by the SRDS experiments script, however, it can be useful for exploring the impact of correlated failures between sites in more detail.
 
 We also have the following dummy data file:
 - **No Hurricane file:**

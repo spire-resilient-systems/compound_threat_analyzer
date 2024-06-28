@@ -6,7 +6,7 @@ import multiprocessing
 
 # assuming that this script runs from inside 'experiments' directory
 
-OUTPUT_DIRECTORY = "SERDP-results" # using as: experiments/{OUTPUT_DIRECTORY}
+OUTPUT_DIRECTORY = "SRDS-results" # using as: experiments/{OUTPUT_DIRECTORY}
 
 INPUT_FILES = { # key = shorter/more descriptive name used for output file. value = path to data file
     "HI_H5Cat2_Honolulu_Waiau_DRFortress": "data/hawaii_data/H5_Cat2_honolulu_waiau_DRFotress_AlohaNap_MTP.csv",
