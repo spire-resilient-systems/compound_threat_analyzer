@@ -141,13 +141,13 @@ FIG_WISE_PARAMS = {
         'sites': ['FL_superhurricane_PalmBeach_PortOrange_MiamiMi1'],
     },
 
-    # '13a': {
+    # '12a': {
     #     'params': ["--method=2", "--random_count=100000", "--num_hurricane_instances=1000",  "--server_threshold=1", "--sites_threshold=1", "--bucket=4"],
     #     'configs': ['6+6', '6+6+6', '1r6+6+6', '2r6+6+6'],
     #     'sites': ['HI_H5Cat2_Honolulu_Kahe_DRFortress'],
     # },
 
-    # '13b': {
+    # '12b': {
     #     'params': ["--method=2", "--random_count=100000", "--num_hurricane_instances=1000",  "--server_threshold=1", "--sites_threshold=1", "--bucket=4"],
     #     'configs': ['6+6', '6+6+6', '1r6+6+6', '2r6+6+6'],
     #     'sites': ['FL_superhurricane_PalmBeach_PortOrange_Jacksonville'],
