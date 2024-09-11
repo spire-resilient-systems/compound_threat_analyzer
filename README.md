@@ -33,7 +33,6 @@ conda env create -f environment.yml
 conda activate compound_threat_analyzer
 ```
 
-
 ## Using the Compound-Threat Analyzer:
 
 The analyzer starts from the ```main.py``` file. 
@@ -90,10 +89,14 @@ We have the following options to specify when running the program:
         The sequence of events, specifically the reconfiguration scenarios. 0 is when reconfiguration happens based on Hurricane prediction followed by a CA. 1 is when CA is in the aftermath of hurricane and reconfiguration happends on Hurricane impact knowledge only. 2 is when CA coincide with the hurricane and reconfiguration happens with the knowledge of both.
 
 
-Since each run of the analyzer is one experiment, we use scripts in the ```./experiments``` directory to run the analyzer multiple times with different parameters to generate the required results which are used by the graph generation notebooks in the same directory. As an example, see the following section "Recreating SRDS results". 
+Since each run of the analyzer is one experiment, we use scripts in the ```./experiments``` directory to run the analyzer multiple times with different parameters to generate the required results which are used by the graph generation notebooks in the same directory. As an example, see the following section "Recreating SRDS 2024 results". 
 
-## Recreating SRDS results:
-This section describes the steps to recreate the core results from our SRDS project. Note that the python scripts contain the relevant shebang in them. If you are unable to run them, try ```chmod +x script.py``` or ```python script.py```.
+## Recreating SRDS 2024 results:
+
+This section describes the steps to recreate the resuls presented in our SRDS 2024 paper ["Tolerating Compound Threats in Critical Infrastructure Control Systems"](https://sites.pitt.edu/~babay/pubs/srds24_compoundThreats.pdf).
+
+Note that the python scripts contain the relevant shebang in them. If you are unable to run them, try ```chmod +x script.py``` or ```python script.py```.
+
 1. First, activate the conda environment ```conda activate compound_threat_analyzer```. See the section "Set up the conda environment as follows:" for instructions to set the environment up for the first time. 
 2. Next, you need to generate the data files that the analyzer can run on. For this, starting from the this root directory of the project, change directory to ./data/hawaii_data and run the script "data_compiler.py" to generate data files for Hawaii. Next change directory to ../florida_data and run the script "data_compiler_superhurricane.py" to generate the data file for Florida.:
 
@@ -111,16 +114,27 @@ cd ../florida_data
 cd ../../experiments; ./SRDS-experiments.py
 ```
 
-4. Following this, run all the cells in the ```SRDS-graphs.ipynb``` notebook to generate the graphs.
+This will create output CSV files in a subdirectory `SRDS-results`.
 
-Note: Experiments using the uniformly random cyberattack model (`method=2`)
+4. Open the ```SRDS-graphs.ipynb``` Jupyter notebook.
+
+```
+jupyter lab SRDS-graphs.ipynb
+```
+
+5. Run all cells in the `SRDS-graphs.ipynb` notebook to generate the graphs (`Run -> Run All Cells`).  
+This will create output PNG files in a subdirectory `SRDS-graphs-pngs`.
+
+**Note:** Experiments using the uniformly random cyberattack model (`method=2`)
 take a long time to run. To run only a subset of the experiments that excludes
 those using the uniformly random cyberattack model (and should finish quickly),
 you can use `SRDS-experiments-subset.py` and `SRDS-graphs-subset.ipynb`
 instead.
 
 ## Data files:
+
 We have three sets of data:
+
 1. **Hurricane impact simulation data for Hawaii:**
     The hurricane impact simulation dataset is pre-generated and saved as an .xlsx file in ```./data/hawaii_data``` directory as ```Hawaii-hurricane-data.xlsx```. This file is used to extract smaller .csv files in the format needed for the analyzer to run on. The .csv files are generated using the script ```data_compiler.py``` in the same directory. Therefore, to work with the Hawaii data, generate the data files as follows: ``` cd data/hawaii_data; python data_compiler.py ```
 
@@ -133,6 +147,7 @@ We have three sets of data:
     The directory ```./data/synthetic_data``` contains the script ```synthetic_hurricane_impact_generator.py``` that can be used to create synthetic hurricane data that the analyzer can use. The script can generate data based on the probabilities of each site's failure and correlated failure probabilities. The probabilities can be set in the ```main()``` function in the script by editing the dictionary objected named ```probs```. The synthetic hurricanes are not used by the SRDS experiments script, however, it can be useful for exploring the impact of correlated failures between sites in more detail.
 
 We also have the following dummy data file:
+
 - **No Hurricane file:**
     In the ```./data``` there is a data file name ```noHurricane_site1_site2_site3_site4_site5.csv``` which is a dummy data file in which none of the sites fails. This data file can be used with the analyzer to analyze a scenario where there is no hurricane and only cyberattacks take place. 
 
@@ -141,7 +156,7 @@ We also have the following dummy data file:
 The Compound-Threat Analyzer is currently developed by the University of
 Pittsburgh [Resilient Systems and Societies Lab](https://rsslab.io/) and the
 Johns Hopkins University [Distributed Systems and Networks
-Lab](http://www.dsn.jhu.edu).
+Lab](https://jhu-dsn.github.io/).
 
 The creators of the Compound-Threat Analyzer are: Yair Amir, Amy Babay, Sahiti
 Bommareddy, Maher Khan, and Huzaifah Nadeem. Benjamin Gilby is a major
