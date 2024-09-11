@@ -93,7 +93,7 @@ Since each run of the analyzer is one experiment, we use scripts in the ```./exp
 
 ## Recreating SRDS 2024 results:
 
-This section describes the steps to recreate the resuls presented in our SRDS 2024 paper ["Tolerating Compound Threats in Critical Infrastructure Control Systems"](https://sites.pitt.edu/~babay/pubs/srds24_compoundThreats.pdf).
+This section describes the steps to recreate the results presented in our SRDS 2024 paper ["Tolerating Compound Threats in Critical Infrastructure Control Systems"](https://sites.pitt.edu/~babay/pubs/srds24_compoundThreats.pdf).
 
 Note that the python scripts contain the relevant shebang in them. If you are unable to run them, try ```chmod +x script.py``` or ```python script.py```.
 
