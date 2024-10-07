@@ -6,14 +6,14 @@ import multiprocessing
 
 # assuming that this script runs from inside 'experiments' directory
 
-OUTPUT_DIRECTORY = "SERDP-results" # using as: experiments/{OUTPUT_DIRECTORY}
+OUTPUT_DIRECTORY = "SRDS-results" # using as: experiments/{OUTPUT_DIRECTORY}
 
 INPUT_FILES = { # key = shorter/more descriptive name used for output file. value = path to data file
-    "HI_H5Cat2_Honolulu_Waiau_DRFortress": "data/hawaii_data/H5_Cat2_honolulu_waiau_DRFotress_AlohaNap_MTP.csv",
+    "HI_H1Cat2_Honolulu_Waiau_DRFortress": "data/hawaii_data/H1_Cat2_honolulu_waiau_DRFotress_AlohaNap_MTP.csv",
     "FL_superhurricane_PalmBeach_PortOrange_Jacksonville": "data/florida_data/FL_superhurricane_PalmBeach_PortOrange_Jacksonville_Jacksonville_Jacksonville.csv",
-    "HI_H5Cat2_Honolulu_Kahe_DRFortress": "data/hawaii_data/H5_Cat2_honolulu_kahe_DRFotress_AlohaNap_MTP.csv",
+    "HI_H1Cat2_Honolulu_Kahe_DRFortress": "data/hawaii_data/H1_Cat2_honolulu_kahe_DRFotress_AlohaNap_MTP.csv",
     "FL_superhurricane_PalmBeach_PortOrange_MiamiMi1": "data/florida_data/FL_superhurricane_PalmBeach_PortOrange_MiamiMI1_MiamiMI1_MiamiMI1.csv",
-    "HI_H5Cat3_Honolulu_Waiau_DRFortress": 'data/hawaii_data/H5_Cat3_honolulu_waiau_DRFotress_AlohaNap_MTP.csv'
+    "HI_H1Cat3_Honolulu_Waiau_DRFortress": 'data/hawaii_data/H1_Cat3_honolulu_waiau_DRFotress_AlohaNap_MTP.csv'
 }
 
 CONFIG_VALS = {
@@ -54,25 +54,25 @@ FIG_WISE_PARAMS = {
     '7a': {
         'params': ["--method=1", "--hurricane_knowledge=yes", "--num_hurricane_instances=1000", "--bucket=1"],
         'configs': ['2', '2+2', '6', '6+6', '6+6+6'],
-        'sites': ['HI_H5Cat2_Honolulu_Waiau_DRFortress'],
+        'sites': ['HI_H1Cat2_Honolulu_Waiau_DRFortress'],
         },
 
     '7b': {
         'params': ["--method=1", "--hurricane_knowledge=yes", "--num_hurricane_instances=1000", "--bucket=2"],
         'configs': ['2', '2+2', '6', '6+6', '6+6+6'],
-        'sites': ['HI_H5Cat2_Honolulu_Waiau_DRFortress'],
+        'sites': ['HI_H1Cat2_Honolulu_Waiau_DRFortress'],
     },
 
     '7c': {
         'params': ["--method=1", "--hurricane_knowledge=yes", "--num_hurricane_instances=1000", "--bucket=3"],
         'configs': ['2', '2+2', '6', '6+6', '6+6+6'],
-        'sites': ['HI_H5Cat2_Honolulu_Waiau_DRFortress'],
+        'sites': ['HI_H1Cat2_Honolulu_Waiau_DRFortress'],
     },
 
     '7d': {
         'params': ["--method=1", "--hurricane_knowledge=yes", "--num_hurricane_instances=1000", "--bucket=4"],
         'configs': ['2', '2+2', '6', '6+6', '6+6+6'],
-        'sites': ['HI_H5Cat2_Honolulu_Waiau_DRFortress'],
+        'sites': ['HI_H1Cat2_Honolulu_Waiau_DRFortress'],
     },
 
     '8a': {
@@ -99,17 +99,29 @@ FIG_WISE_PARAMS = {
         'sites': ['FL_superhurricane_PalmBeach_PortOrange_Jacksonville'],
     },
 
-    '10a': {
-        'params': ["--num_hurricane_instances=1000", "--bucket=1"],
-        'configs': ['6+6', '6+6+6'],
-        'sites': ['HI_H5Cat2_Honolulu_Waiau_DRFortress', 'HI_H5Cat2_Honolulu_Kahe_DRFortress'],
-    },
+    # '9a': {
+    #     'params': ["--method=2", "--random_count=100000", "--num_hurricane_instances=1000", "--server_threshold=1", "--sites_threshold=1", "--bucket=4"],
+    #     'configs': ['2', '2+2', '6', '6+6', '6+6+6'],
+    #     'sites': ['HI_H1Cat2_Honolulu_Waiau_DRFortress'],
+    # },
 
-    '10b': {
+    # '9b': {
+    #     'params': ["--method=2", "--random_count=100000", "--num_hurricane_instances=1000",  "--server_threshold=1", "--sites_threshold=1", "--bucket=4"],
+    #     'configs': ['2', '2+2', '6', '6+6', '6+6+6'],
+    #     'sites': ['FL_superhurricane_PalmBeach_PortOrange_Jacksonville'],
+    # },
+
+    '10a': {
         'params': ["--method=1", "--hurricane_knowledge=yes", "--num_hurricane_instances=1000", "--bucket=2"],
         'configs': ['6+6', '6+6+6'],
-        'sites': ['HI_H5Cat2_Honolulu_Waiau_DRFortress', 'HI_H5Cat2_Honolulu_Kahe_DRFortress'],
+        'sites': ['HI_H1Cat2_Honolulu_Waiau_DRFortress', 'HI_H1Cat2_Honolulu_Kahe_DRFortress'],
     },
+
+    # '10b': {
+    #     'params': ["--method=2", "--random_count=100000", "--num_hurricane_instances=1000",  "--server_threshold=1", "--sites_threshold=1", "--bucket=4"],
+    #     'configs': ['6+6', '6+6+6'],
+    #     'sites': ['HI_H1Cat2_Honolulu_Waiau_DRFortress', 'HI_H1Cat2_Honolulu_Kahe_DRFortress'],
+    # },
 
     '11a': {
         'params': ["--num_hurricane_instances=1000", "--bucket=1"],
@@ -129,16 +141,28 @@ FIG_WISE_PARAMS = {
         'sites': ['FL_superhurricane_PalmBeach_PortOrange_MiamiMi1'],
     },
 
-    '14': {
+    # '12a': {
+    #     'params': ["--method=2", "--random_count=100000", "--num_hurricane_instances=1000",  "--server_threshold=1", "--sites_threshold=1", "--bucket=4"],
+    #     'configs': ['6+6', '6+6+6', '1r6+6+6', '2r6+6+6'],
+    #     'sites': ['HI_H1Cat2_Honolulu_Kahe_DRFortress'],
+    # },
+
+    # '12b': {
+    #     'params': ["--method=2", "--random_count=100000", "--num_hurricane_instances=1000",  "--server_threshold=1", "--sites_threshold=1", "--bucket=4"],
+    #     'configs': ['6+6', '6+6+6', '1r6+6+6', '2r6+6+6'],
+    #     'sites': ['FL_superhurricane_PalmBeach_PortOrange_Jacksonville'],
+    # },
+
+    'A1a': {
         'params': ["--num_hurricane_instances=1000", "--bucket=1"],
         'configs': ['2', '2+2', '6', '6+6', '6+6+6'],
-        'sites': ['HI_H5Cat3_Honolulu_Waiau_DRFortress'],
+        'sites': ['HI_H1Cat3_Honolulu_Waiau_DRFortress'],
     },
 
-    '15': {
+    'A1b': {
         'params': ["--method=1", "--hurricane_knowledge=yes", "--num_hurricane_instances=1000", "--bucket=4"],
         'configs': ['2', '2+2', '6', '6+6', '6+6+6'],
-        'sites': ['HI_H5Cat3_Honolulu_Waiau_DRFortress'],
+        'sites': ['HI_H1Cat3_Honolulu_Waiau_DRFortress'],
     },
 }
 
@@ -197,8 +221,8 @@ def main():
                 if fig not in ['10a', '10b', '10c', '11a', '11b']:
                     output_param += fig + '_' + conf + '.csv'
                     
-                elif fig in ['10a', '10b', '10c']:
-                    site_letter = 'W' if sites == 'HI_H5Cat2_Honolulu_Waiau_DRFortress' else 'K'
+                elif fig in ['10a', '10b']:
+                    site_letter = 'W' if sites == 'HI_H1Cat2_Honolulu_Waiau_DRFortress' else 'K'
                     output_param += fig + '_' + conf + '_' + site_letter + '.csv'
                     
                 elif fig in ['11a', '11b']:
